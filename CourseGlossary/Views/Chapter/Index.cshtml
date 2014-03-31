@@ -1,0 +1,27 @@
+﻿@model CourseGlossary.Models.ChapterViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="well">
+    <fieldset>
+        <legend>Chapters</legend>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CourseId)<br />
+            @Html.DropDownListFor(m => m.CourseId, Model.Courses, new { @id = "ddlCourses", @class = "form-control" })
+        </div>
+
+        <div id="partialPlaceHolder">
+            @*@Html.Partial("_Chapters") style="display: none;"*@
+        </div>
+    </fieldset>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/ChapterIndex")
+}

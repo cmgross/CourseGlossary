@@ -1,0 +1,8 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+<div class="alert alert-danger">
+    <h3>An error occurred while processing your request!</h3>
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+        <h4>@ViewBag.Error</h4>
+    }
+</div>
