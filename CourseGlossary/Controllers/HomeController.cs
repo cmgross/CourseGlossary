@@ -1,30 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using CourseGlossary.DataLayer;
+using CourseGlossary.Models;
+using ServiceStack.Mvc;
 
 namespace CourseGlossary.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View(new HomeViewModel());
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public JsonResult SearchGlossaryTerms(string searchTerm, int courseId)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var results = DatabaseService.GetAll<GlossaryTerm>(c => c.CourseId == courseId && c.Term.Contains(searchTerm)).ToList();
+            return new JsonResult
+            {
+                Data = results.ToArray(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
         }
 
-        public ActionResult Contact()
+        protected override JsonResult Json(object data, string contentType, Encoding contentEncoding, JsonRequestBehavior behavior)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return new ServiceStackJsonResult
+            {
+                Data = data,
+                ContentType = contentType,
+                ContentEncoding = contentEncoding
+            };
         }
     }
 }
