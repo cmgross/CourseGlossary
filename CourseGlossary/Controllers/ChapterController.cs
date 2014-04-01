@@ -41,7 +41,7 @@ namespace CourseGlossary.Controllers
              {
                  try
                  {
-                     //DatabaseService.Create(chapter);
+                     DatabaseService.Create(chapter);
                      return RedirectToAction("Index");
                  }
                  catch (Exception exception)
