@@ -1,7 +1,8 @@
-﻿@model CourseGlossary.Models.ChapterViewModel
+﻿@model CourseGlossary.Models.GlossaryTermViewModel
 @{
     ViewBag.Title = "Index";
 }
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -13,6 +14,11 @@
             @Html.LabelFor(model => model.CourseId)<br />
             @Html.DropDownListFor(m => m.CourseId, Model.Courses, new { @id = "ddlCourses", @class = "form-control" })
         </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Chapters)<br />
+            @Html.DropDownListFor(m => m.Chapters, Model.Chapters, new { @id = "ddlChapters", @class = "form-control" })
+        </div>
 
         <div id="partialPlaceHolder">
             @*@Html.Partial("_Chapters") style="display: none;"*@
@@ -20,5 +26,5 @@
     </fieldset>
 </div>
 @section Scripts {
-    @Scripts.Render("~/bundles/ChapterIndex")
+    @Scripts.Render("~/bundles/GlossaryTermIndex")
 }

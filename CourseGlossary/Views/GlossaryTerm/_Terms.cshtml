@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CourseGlossary.Models.GlossaryTerm>
+<table class="table table-striped table-hover table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Term)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Page)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Term)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Page)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @*|@Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>

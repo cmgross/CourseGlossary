@@ -19,6 +19,9 @@ namespace CourseGlossary
             bundles.Add(new ScriptBundle("~/bundles/ChapterIndex").Include(
            "~/Scripts/ChapterIndex.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/GlossaryTermIndex").Include(
+          "~/Scripts/GlossaryTermIndex.js"));
+
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
 

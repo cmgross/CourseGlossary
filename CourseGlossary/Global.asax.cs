@@ -32,6 +32,7 @@ namespace CourseGlossary
                 const bool overwrite = false;
                 db.CreateTables(overwrite, typeof(Course));
                 db.CreateTables(overwrite, typeof(Chapter));
+                db.CreateTables(overwrite, typeof(GlossaryTerm));
             }
         }
     }

@@ -11,7 +11,7 @@ namespace CourseGlossary.Controllers
     [Authorize]
     public class CourseController : Controller
     {
-        // GET: /ErrorCategory/
+        // GET: /Course/
         [HttpGet]
         public ActionResult Index()
         {
