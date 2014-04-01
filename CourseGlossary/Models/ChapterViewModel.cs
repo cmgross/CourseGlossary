@@ -21,5 +21,21 @@ namespace CourseGlossary.Models
                 Value = c.Id.ToString()
             }).ToList();
         }
+
+        public ChapterViewModel(Chapter chapter)
+        {
+            CourseId = chapter.CourseId;
+            Id = chapter.Id;
+            ChapterNumber = chapter.ChapterNumber;
+            Title = chapter.Title;
+
+            var courses = DatabaseService.GetAll<Course, int>(c => c.Id);
+            Courses = courses.Select(c => new SelectListItem
+            {
+                Text = c.Name,
+                Value = c.Id.ToString(),
+                Selected = c.Id == chapter.CourseId
+            }).ToList();
+        }
     }
 }

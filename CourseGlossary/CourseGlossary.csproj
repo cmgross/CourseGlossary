@@ -210,6 +210,7 @@
     <Content Include="Views\Chapter\Index.cshtml" />
     <Content Include="Views\Chapter\_Chapters.cshtml" />
     <Content Include="Views\Chapter\Create.cshtml" />
+    <Content Include="Views\Chapter\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
