@@ -24,5 +24,30 @@ namespace CourseGlossary.Models
                 Value = c.Id.ToString()
             }).ToList();
         }
+
+        public GlossaryTermViewModel(GlossaryTerm glossaryTerm)
+        {
+            CourseId = glossaryTerm.CourseId;
+            ChapterNumber = glossaryTerm.ChapterNumber;
+            Id = glossaryTerm.Id;
+            Term = glossaryTerm.Term;
+            Page = glossaryTerm.Page;
+
+            var courses = DatabaseService.GetAll<Course, int>(c => c.Id);
+            Courses = courses.Select(c => new SelectListItem
+            {
+                Text = c.Name,
+                Value = c.Id.ToString(),
+                Selected = c.Id == glossaryTerm.CourseId
+            }).ToList();
+
+            var chapters = DatabaseService.GetAll<Chapter>(c => c.CourseId == glossaryTerm.CourseId).ToList();
+            Chapters = chapters.Select(c => new SelectListItem
+            {
+                Text = c.ChapterNumber.ToString() + " " + c.Title,
+                Value = c.Id.ToString(),
+                Selected = c.ChapterNumber == glossaryTerm.ChapterNumber
+            }).ToList();
+        }
     }
 }

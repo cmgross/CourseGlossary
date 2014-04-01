@@ -1,0 +1,38 @@
+﻿@model CourseGlossary.Models.GlossaryTermViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="well">
+    @using (Html.BeginForm("Edit", "GlossaryTerm", FormMethod.Post, new { id = "editGlossaryTerm", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <fieldset>
+            <legend>Edit Chapter</legend>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseId)<br />
+                @Html.DropDownListFor(m => m.CourseId, Model.Courses, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChapterNumber)<br />
+                @Html.DropDownListFor(m => m.ChapterNumber, Model.Chapters, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Term)<br />
+                @Html.TextBoxFor(model => model.Term, new { @class = "form-control", @maxlength = "50" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Page)<br />
+                @Html.EditorFor(model => model.Page)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            @Html.ValidationSummary()
+        </fieldset>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
