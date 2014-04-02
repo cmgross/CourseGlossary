@@ -21,7 +21,7 @@ namespace CourseGlossary.Controllers
         [HttpGet]
         public JsonResult SearchGlossaryTerms(string searchTerm, int courseId)
         {
-            var results = DatabaseService.GetAll<GlossaryTerm>(c => c.CourseId == courseId && c.Term.Contains(searchTerm)).ToList();
+            var results = DatabaseService.GetAll<GlossaryTerm>(c => c.CourseId == courseId && c.Term.ToLower().Contains(searchTerm.ToLower())).ToList();
             return new JsonResult
             {
                 Data = results.ToArray(),
