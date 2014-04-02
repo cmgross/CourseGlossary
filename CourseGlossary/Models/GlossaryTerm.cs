@@ -11,13 +11,11 @@ namespace CourseGlossary.Models
     {
         [Display(Name = "Course")]
         [System.ComponentModel.DataAnnotations.Required]
-        [ForeignKey(typeof(Course), OnDelete = "NO ACTION")]
         [System.ComponentModel.DataAnnotations.Range(1, int.MaxValue, ErrorMessage = "Course required.")]
         public int CourseId { get; set; }
 
         [Display(Name = "Chapter Number")]
         [System.ComponentModel.DataAnnotations.Required]
-        [ForeignKey(typeof(Course), OnDelete = "CASCADE")]
         [System.ComponentModel.DataAnnotations.Range(1, 99)]
         public int ChapterNumber { get; set; }
 
